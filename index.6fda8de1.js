@@ -1,0 +1,2 @@
+import((function(e){return fetch(`https://api.thecatapi.com/v1/images/${e}?api_key=live_CD4h9ytUrQxkSajov6EOYXvOlELCBxcuEG8Iz4XMbgsbYBBuqS5GU09SgGkqSn1T`).then((e=>{if(!e.ok)throw new Error(e.statusText);return e.json()}))}));const e=document.querySelector(".breed-select");document.querySelector(".cat-info");e.addEventListener("change",(function(e){e.preventDefault();const t=e.currentTargeet.value;console.log(t)}));
+//# sourceMappingURL=index.6fda8de1.js.map
