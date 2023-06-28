@@ -1,2 +1,0 @@
-!function(){var e="live_CD4h9ytUrQxkSajov6EOYXvOlELCBxcuEG8Iz4XMbgsbYBBuqS5GU09SgGkqSn1T";import((function(t){return fetch("".concat("https://api.thecatapi.com/v1/images","/").concat(t,"?api_key=").concat(e)).then((function(e){if(!e.ok)throw new Error(e.statusText);return e.json()}))}));var t=document.querySelector(".breed-select");document.querySelector(".cat-info");t.addEventListener("change",(function(e){e.preventDefault();var t=e.currentTargeet.value;console.log(t)}))}();
-//# sourceMappingURL=index.96753279.js.map
