@@ -1,11 +1,14 @@
 import { fetchCatByBreed } from "./cat-api";
 import { fetchBreeds } from "./cat-api";
 import { Notify } from "notiflix";
-import SlimSelect from 'slim-select'
+import SlimSelect from 'slim-select';
+import 'slim-select/dist/slimselect.css';
+
+
 
 
 const selected = document.querySelector('.breed-select');
-selected.setAttribute('id', 'slim');
+selected.setAttribute('id', 'single');
 console.log(selected)
 const list = document.querySelector('.cat-info');
 list.innerHTML += '<div class = cat-info-desc></div>';
@@ -32,7 +35,6 @@ renderBreedsList()
 
 function onChange(evt){
     evt.preventDefault();
-    loader.hidden = false;
     divCatDesc.innerHTML  = "";
     const breedId = evt.currentTarget.value;
     console.log(breedId);
@@ -45,6 +47,9 @@ function onChange(evt){
     function creatMarkupOption(breeds){
     const markup = breeds.map(breed =>{ return `<option value = "${breed.reference_image_id}">${breed.name}</option>`}).join('');
         selected.insertAdjacentHTML('beforeend', markup);
+        new SlimSelect({
+            select: '#single',
+          });
     }
 
 function createMarkupCatDesc (breed){
