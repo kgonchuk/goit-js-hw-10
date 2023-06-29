@@ -18,9 +18,9 @@ const body = document.querySelector('body');
 
 // body.style.backgroundImage = "url('https://i0.wp.com/www.catwiki.com/wp-content/uploads/2020/11/best-cat-art-how-many-breeds-of-cats-are-there.png?w=1500&ssl=1')"
 selected.style = 'position :absolute; top : 10%; left : 40% ; width :300px';
-divCatDesc.style = 'position :absolute; top : 20%; left : 30% ; width :500px'
-divCatDesc.style.backgroundColor = 'beige';
-divCatDesc.style.borderRadius = '15px';
+// divCatDesc.style = 'position :absolute; top : 20%; left : 30% ; width :500px'
+// divCatDesc.style.backgroundColor = 'beige';
+// divCatDesc.style.borderRadius = '15px';
 
 
 
@@ -55,7 +55,7 @@ function onChange(evt){
 
 function createMarkupCatDesc (breed){
    const markup = `
-    <img src="${breed.url} " alt="${breed.id}" width ="300" >
+    <img src="${breed.url} " alt="${breed.id}" width ="300">
   <h2>${breed.breeds[0].name} </h2>
 <p>${breed.breeds[0].description}</p>
 <p>Temperament:${breed.breeds[0].temperament}</p>`;
@@ -71,3 +71,4 @@ function renderBreedsList(){
     )
 }
   
+
