@@ -4,9 +4,6 @@ import { Notify } from "notiflix";
 import SlimSelect from 'slim-select';
 import 'slim-select/dist/slimselect.css';
 
-
-
-
 const selected = document.querySelector('.breed-select');
 selected.setAttribute('id', 'single');
 console.log(selected)
@@ -17,7 +14,9 @@ const loader  = document.querySelector('.loader');
 const errorEl = document.querySelector('.error')
 const body = document.querySelector('body');
 
-body.style.backgroundImage = "url('https://i0.wp.com/www.catwiki.com/wp-content/uploads/2020/11/best-cat-art-how-many-breeds-of-cats-are-there.png?w=1500&ssl=1')"
+
+
+// body.style.backgroundImage = "url('https://i0.wp.com/www.catwiki.com/wp-content/uploads/2020/11/best-cat-art-how-many-breeds-of-cats-are-there.png?w=1500&ssl=1')"
 selected.style = 'position :absolute; top : 10%; left : 40% ; width :300px';
 divCatDesc.style = 'position :absolute; top : 20%; left : 30% ; width :500px'
 divCatDesc.style.backgroundColor = 'beige';
@@ -31,17 +30,19 @@ divCatDesc.style.borderRadius = '15px';
 selected.addEventListener('change', onChange)
 errorEl.hidden = true;
 
+
 renderBreedsList()
 
 function onChange(evt){
     evt.preventDefault();
+    // loader.hidden = false;
     divCatDesc.innerHTML  = "";
     const breedId = evt.currentTarget.value;
     console.log(breedId);
     fetchCatByBreed(breedId)
     .then(breed => createMarkupCatDesc (breed))
     .catch(err  => {console.log(err); Notify.failure('Oops! Something went wrong! Try reloading the page!')})
-    .finally(() => loader.hidden = true);
+    .finally(() => {loader.hidden = true});
 }
 
     function creatMarkupOption(breeds){
@@ -59,21 +60,14 @@ function createMarkupCatDesc (breed){
 <p>${breed.breeds[0].description}</p>
 <p>Temperament:${breed.breeds[0].temperament}</p>`;
 divCatDesc.insertAdjacentHTML('beforeend', markup );
-new SlimSelect({
-    select: '#selectElement',
-    settings: {
-        slim: true
-    }
-  })
 }
 
 function renderBreedsList(){
-    loader.hidden = true;
+    loader.hidden = false;
     fetchBreeds()
     .then(breeds => creatMarkupOption(breeds))
-    .catch(error => console.log(error))
-    .finally(() => {loader.hidden = true;
-    selected.hidden = false}
+    .catch(error => {console.log(error); Notify.failure('Oops! Something went wrong! Try reloading the page!')})
+    .finally(() => {loader.hidden = true}
     )
 }
   
