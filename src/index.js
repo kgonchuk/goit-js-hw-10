@@ -12,19 +12,12 @@ list.innerHTML += '<div class = cat-info-desc></div>';
 const divCatDesc = document.querySelector('.cat-info-desc');
 const loader  = document.querySelector('.loader');
 const errorEl = document.querySelector('.error')
-const body = document.querySelector('body');
-
-
-
-// body.style.backgroundImage = "url('https://i0.wp.com/www.catwiki.com/wp-content/uploads/2020/11/best-cat-art-how-many-breeds-of-cats-are-there.png?w=1500&ssl=1')"
-selected.style = 'position :absolute; top : 10%; left : 40% ; width :300px';
-// divCatDesc.style = 'position :absolute; top : 20%; left : 30% ; width :500px'
-// divCatDesc.style.backgroundColor = 'beige';
-// divCatDesc.style.borderRadius = '15px';
 
 
 
 
+
+selected.style = 'position :absolute; top : 5%; left : 40% ; width :300px';
 
 
 selected.addEventListener('change', onChange)
@@ -35,7 +28,6 @@ renderBreedsList()
 
 function onChange(evt){
     evt.preventDefault();
-    // loader.hidden = false;
     divCatDesc.innerHTML  = "";
     const breedId = evt.currentTarget.value;
     console.log(breedId);
@@ -55,10 +47,10 @@ function onChange(evt){
 
 function createMarkupCatDesc (breed){
    const markup = `
-    <img src="${breed.url} " alt="${breed.id}" width ="300">
-  <h2>${breed.breeds[0].name} </h2>
-<p>${breed.breeds[0].description}</p>
-<p>Temperament:${breed.breeds[0].temperament}</p>`;
+    <img src="${breed.url} " alt="${breed.id}" width ="300" class = "img-cats">
+  <h2 class = "text">${breed.breeds[0].name} </h2>
+<p class = "text">${breed.breeds[0].description} </p>
+<p class = "text">Temperament:${breed.breeds[0].temperament}</p>`;
 divCatDesc.insertAdjacentHTML('beforeend', markup );
 }
 
