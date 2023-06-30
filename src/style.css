@@ -10,6 +10,10 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+select{
+position: absolute;
+top: 10%;
+}
 .cat-info{
   width: 350px;
   margin: 70px auto;

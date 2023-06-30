@@ -13,13 +13,6 @@ const divCatDesc = document.querySelector('.cat-info-desc');
 const loader  = document.querySelector('.loader');
 const errorEl = document.querySelector('.error')
 
-
-
-
-
-selected.style = 'position :absolute; top : 5%; left : 40% ; width :300px';
-
-
 selected.addEventListener('change', onChange)
 errorEl.hidden = true;
 
