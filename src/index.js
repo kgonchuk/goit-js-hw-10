@@ -6,13 +6,11 @@ import 'slim-select/dist/slimselect.css';
 
 const selected = document.querySelector('.breed-select');
 selected.setAttribute('id', 'single');
-console.log(selected)
 const list = document.querySelector('.cat-info');
-list.innerHTML += '<div class = cat-info-desc></div>';
+list.insertAdjacentHTML('beforeend','<div class = cat-info-desc></div>')
 const divCatDesc = document.querySelector('.cat-info-desc');
 const loader  = document.querySelector('.loader');
 const errorEl = document.querySelector('.error')
-
 selected.addEventListener('change', onChange)
 errorEl.hidden = true;
 
@@ -20,14 +18,14 @@ errorEl.hidden = true;
 renderBreedsList()
 
 function onChange(evt){
+    loader.classList.remove('hidden');
     evt.preventDefault();
     divCatDesc.innerHTML  = "";
     const breedId = evt.currentTarget.value;
-    console.log(breedId);
     fetchCatByBreed(breedId)
     .then(breed => createMarkupCatDesc (breed))
     .catch(err  => {console.log(err); Notify.failure('Oops! Something went wrong! Try reloading the page!')})
-    .finally(() => {loader.hidden = true});
+    .finally(() => loader.classList.add('hidden'));
 }
 
     function creatMarkupOption(breeds){
@@ -48,11 +46,11 @@ divCatDesc.insertAdjacentHTML('beforeend', markup );
 }
 
 function renderBreedsList(){
-    loader.hidden = false;
+    loader.classList.remove('hidden');
     fetchBreeds()
     .then(breeds => creatMarkupOption(breeds))
     .catch(error => {console.log(error); Notify.failure('Oops! Something went wrong! Try reloading the page!')})
-    .finally(() => {loader.hidden = true}
+    .finally(() => {loader.classList.add('hidden')}
     )
 }
   
